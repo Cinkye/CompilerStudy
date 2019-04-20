@@ -1,0 +1,25 @@
+%{
+#include "stdio.h" 
+int main(int argc,char** argv);
+char result = '$';
+%}
+
+digit [0-9]
+letter [a-zA-Z]
+id {letter}(({digit}|{letter})+)
+%%
+{id} {result='i';}
+{digit} {result='d';}
+. {/*其它字符不作处理*/}
+%%
+
+int main(int argc, char** argv)
+{ 
+	yyin=fopen("test","r"); 
+	yylex();
+	printf("result: %c", result);
+	system("PAUSE");
+	return 0;
+} 
+
+int yywrap(void){return 1;}

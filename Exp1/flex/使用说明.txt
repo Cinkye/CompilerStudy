@@ -1,0 +1,2 @@
+win_flex.exe --wincompat count.l
+
