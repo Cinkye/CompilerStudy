@@ -1,0 +1,4 @@
+这里包含了flex和bison两个工具，lexya_a.l和lexya_a.y分别是flex和bison的示例输入，
+lexya_a.l经过flex生成lex.yy.c文件，win_flex.exe --wincompat lexya_a.l
+lexya_a.y经过bison生成lexya_a.tab.h和lexya_a.tab.c文件，win_bison.exe -d lexya_a.y
+把这3个文件导入一个C/C++项目工程编译可得到简单的计算器程序。
