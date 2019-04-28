@@ -8,6 +8,7 @@ import inter.Constant;
 import inter.Do;
 import inter.Else;
 import inter.Expr;
+import inter.For;
 import inter.Id;
 import inter.If;
 import inter.Not;
@@ -74,6 +75,17 @@ public class Parser {
 	      }
 	   }
 
+	   Stmt declsWithAssign() throws IOException{
+	   		 Type p = type(); Token tok = look; match(Tag.ID);
+	   		 Id id = new Id((Word)tok, p, used);
+	         top.put( tok, id );
+	         used = used + p.width;
+	         match('=');
+	         Stmt stmt = new Set(id, bool());
+	         match(';');
+	         return stmt;
+	   }
+
 	   Type type() throws IOException {
 
 	      Type p = (Type)look;            // expect look.tag == Tag.BASIC 
@@ -131,6 +143,16 @@ public class Parser {
 	         Stmt.Enclosing = savedStmt;  // reset Stmt.Enclosing
 	         return donode;
 
+	      case Tag.FOR:
+	      	 For fornode = new For();
+	      	 savedStmt = Stmt.Enclosing; Stmt.Enclosing = fornode;
+	      	 match(Tag.FOR); match('('); declsWithAssign();
+	      	 x = bool(); s = stmt(); s1 = stmt(); match(')'); s2 = stmt();
+	      	 fornode.init(x,s2);
+	      	 Stmt.Enclosing = savedStmt;
+	      	 return fornode;
+
+
 	      case Tag.BREAK:
 	         match(Tag.BREAK); match(';');
 	         return new Break();
@@ -167,7 +189,6 @@ public class Parser {
 	      }
 	      return x;
 	   }
-
 	   Expr join() throws IOException {
 	      Expr x = equality();
 	      while( look.tag == Tag.AND ) {
