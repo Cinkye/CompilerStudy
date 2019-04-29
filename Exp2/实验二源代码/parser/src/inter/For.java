@@ -1,3 +1,4 @@
+// A file to deal with "for" clause
 package inter;
 
 import symbols.Type;
@@ -7,17 +8,17 @@ public class For extends Stmt {
    Expr expr; Stmt stmt;
 
    public For() {
-      expr = null; stmt = null;
+      expr = null; stmt = null;  // expression and statements generated to be null
    }
 
    public void init(Expr x, Stmt s) {
-      expr = x;  stmt = s;
-      if( expr.type != Type.Bool ) expr.error("boolean required in for");
+      expr = x;  stmt = s;    // Initialize expression and statement
+      if( expr.type != Type.Bool ) expr.error("boolean required in for");     // Output error if no boolean expression provided
    }
 
-   public void gen(int b, int a) {}
+   public void gen(int b, int a) {}    // Function generate
    
-   public void display(){
+   public void display(){     // Output
 	   emit("stmt : for begin");
 	   stmt.display();
 	   emit("stmt : for end");
@@ -25,5 +26,5 @@ public class For extends Stmt {
 }
 //Input for test
 //{for(int i = 0;i < 10;i = i + 1;){}}
-//{for(int i = 0;i < 10;i = i + 1;){for(int j = 0;j < 10;j = j + 1;)}}
+//{for(int i = 0;i < 10;i = i + 1;){for(int j = 0;j < 10;j = j + 1;){int q;q = i + 1;}}}
 //{int i =0;while(i < 5){while(i < 3){}}}

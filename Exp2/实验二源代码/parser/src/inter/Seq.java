@@ -1,3 +1,4 @@
+// A file to deal with a sequence of statements
 package inter;
 
 public class Seq extends Stmt {
@@ -9,9 +10,9 @@ public class Seq extends Stmt {
 	   public void gen(int b, int a) {}
 	   
 	   public void display(){
-		  if ( stmt1 == Stmt.Null ) stmt2.display();
+		  if ( stmt1 == Stmt.Null ) stmt2.display();	// If one statement is empty, print the other
 		     else if ( stmt2 == Stmt.Null ) stmt1.display();
-		     else {
+		     else {		// else print both
 		    	stmt1.display();
 		        stmt2.display();
 		     }

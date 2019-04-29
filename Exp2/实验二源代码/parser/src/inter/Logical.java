@@ -1,20 +1,21 @@
+// A file to deal with logical operators
 package inter;
 
 import symbols.Type;
 import lexer.Token;
 
 public class Logical extends Expr{
-	public Expr expr1, expr2;
+	public Expr expr1, expr2;		// Two operands
 	Logical(Token tok, Expr x1, Expr x2){
 		super(tok,null);
 		expr1 = x1; expr2 = x2;
 		type = check(expr1.type, expr2.type);
-		if(type==null) error("type error");
+		if(type==null) error("type error");		// If not both the two operands are boolean values, output error
 	}
 	
-	public Type check(Type p1, Type p2){
-		if(p1==Type.Bool&&p2==Type.Bool) return Type.Bool;
-		else return null;
+	public Type check(Type p1, Type p2){		// Check if the two operands are all boolean values
+		if(p1==Type.Bool&&p2==Type.Bool) return Type.Bool;	// If so, return Type.Bool
+		else return null;						// Otherwise return null
 	}
 	
 	public Expr gen(){
@@ -26,5 +27,5 @@ public class Logical extends Expr{
 		emitlabel(f);emit(temp.toString()+" = false");
 		emitlabel(a);
 		return temp;
-	}
+	}	// Function generate
 }

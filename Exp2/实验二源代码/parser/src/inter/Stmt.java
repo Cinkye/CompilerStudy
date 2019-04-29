@@ -1,3 +1,4 @@
+// A file to deal with a statement
 package inter;
 
 public class Stmt extends Node {
@@ -11,5 +12,5 @@ public class Stmt extends Node {
    int after = 0;                   // saves label after
    public static Stmt Enclosing = Stmt.Null;  // used for break stmts
    
-   public void display() {}
+   public void display() {}		// Output
 }

@@ -1,3 +1,4 @@
+// A file to deal with the "and" operator
 package inter;
 
 import lexer.Token;

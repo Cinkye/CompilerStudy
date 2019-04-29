@@ -1,3 +1,4 @@
+// A file to deal with a node in the syntax tree
 package inter;
 
 import lexer.Lexer;
@@ -7,7 +8,7 @@ public class Node {
 	
 	Node() {lexline=Lexer.line;}
 	
-	void error(String s) { throw new Error("near line "+lexline+": "+s); }
+	void error(String s) { throw new Error("near line "+lexline+": "+s); }	// Error output format
 	
 	static int labels = 0;
 
