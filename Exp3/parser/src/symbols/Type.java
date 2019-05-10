@@ -23,5 +23,7 @@ public class Type extends Word {
 		else if(p1==Type.Int||p2==Type.Int) return Type.Int;
 		else return Type.Char;
 	}
+
+	public String toString() { return lexeme; }
 	
 }

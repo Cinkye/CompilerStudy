@@ -14,7 +14,7 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		// 获取文件
-		File file = new File("D:/test.txt");
+		File file = new File("C:\\Users\\Administrator\\Desktop\\CompilerStudy\\Exp3\\test.txt");
 		Reader reader = null;
 		reader = new InputStreamReader(new FileInputStream(file));
 		// 新建一个词法解析器，将文件传给lexer，由它读取文件内容

@@ -9,7 +9,7 @@ public class For extends Stmt {
 	
 	public void init(Stmt s1, Expr x, Stmt s2, Stmt s3) {
 		expr = x; stmt1 = s1; stmt2 = s2; stmt3 = s3;
-		if( expr.type != Type.Bool ) expr.error("boolean required in do");
+		if( expr.type != Type.Bool ) expr.error("boolean required in for");
 	}
 	
 	public void gen(int b, int a) {}

@@ -9,7 +9,7 @@ public class Logical extends Expr{
 		super(tok,null);
 		expr1 = x1; expr2 = x2;
 		type = check(expr1.type, expr2.type);
-		if(type==null) error("type error");
+		if(type==null) error("type error: all operands should be boolean");
 	}
 	
 	public Type check(Type p1, Type p2){

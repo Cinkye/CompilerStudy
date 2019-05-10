@@ -8,7 +8,7 @@ public class Set extends Stmt {
 
    public Set(Id i, Expr x) {
       id = i; expr = x;
-      if ( check(id.type, expr.type) == null ) error("type error");
+      if ( check(id.type, expr.type) == null ) error("type error: Cannot convert " + expr.type.toString() + " to " + id.type.toString());
    }
 
    public Type check(Type p1, Type p2) {

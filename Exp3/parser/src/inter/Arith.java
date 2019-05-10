@@ -10,7 +10,7 @@ public class Arith extends Op {
 	   public Arith(Token tok, Expr x1, Expr x2)  {
 	      super(tok, null); expr1 = x1; expr2 = x2;
 	      type = Type.max(expr1.type, expr2.type);
-	      if (type == null ) error("type error");
+	      if (type == null ) error("type error: all operands should be numeric.");
 	   }
 
 	   public Expr gen() {
