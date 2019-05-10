@@ -151,6 +151,19 @@ public class Parser {
 	      	 fornode.init(x,s2);
 	      	 Stmt.Enclosing = savedStmt;
 	      	 return fornode;
+			
+			// Another solution
+			// case Tag.FOR:
+	    	//  For fornode = new For();
+	    	//  savedStmt = Stmt.Enclosing; Stmt.Enclosing = fornode;
+	    	//  match(Tag.FOR);				match('('); 
+	    	//  Stmt fors1 = forassign(); 		match(';');
+	    	//  Expr forx = bool(); 			match(';'); 
+	    	//  Stmt fors2 = forassign();		match(')');
+	    	//  Stmt fors3 = stmt(); 
+	    	//  fornode.init(fors1, forx, fors2, fors3);
+	    	//  Stmt.Enclosing = savedStmt;
+	    	//  return fornode;
 
 
 	      case Tag.BREAK:	// stmt -> break ;
@@ -181,6 +194,23 @@ public class Parser {
 	      match(';');
 	      return stmt;
 	   }
+
+		// Another solution
+		// Stmt forassign() throws IOException {
+		//       Stmt stmt;  Token t = look;
+		//       match(Tag.ID);
+		//       Id id = top.get(t);
+		//       if( id == null ) error(t.toString() + " undeclared");
+
+		//       if( look.tag == '=' ) {       // S -> id = E ;
+		//          move();  stmt = new Set(id, bool());
+		//       }
+		//       else {                        // S -> L = E ;
+		//          Access x = offset(id);
+		//          match('=');  stmt = new SetElem(x, bool());
+		//       }
+		//       return stmt;
+	   // }
 
 	   Expr bool() throws IOException {		//	bool -> bool || join | join
 	      Expr x = join();	// join
