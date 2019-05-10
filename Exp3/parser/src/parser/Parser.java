@@ -69,10 +69,11 @@ public class Parser {
 	   void decls() throws IOException {
 
 	      while( look.tag == Tag.BASIC ) {   // D -> type ID ;
-	         Type p = type(); Token tok = look; match(Tag.ID); match(';');
+	         Type p = type(); Token tok = look; match(Tag.ID); 
 	         Id id = top.get(tok);
 	         if( id != null )	error("multiple declarations of " + tok.toString());
 	         else	id = new Id((Word)tok, p, used);
+	         match(';');
 	         top.put( tok, id );
 	         used = used + p.width;
 	      }
