@@ -1,0 +1,6 @@
+{
+int i;
+bool j;
+int k;
+k = j;
+}
