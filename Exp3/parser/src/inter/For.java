@@ -12,6 +12,18 @@ public class For extends Stmt {
 		if( expr.type != Type.Bool ) expr.error("boolean required in for");
 	}
 	
-	public void gen(int b, int a) {}
+	public void gen(int b, int a) {
+		stmt1.gen(0,b);
+		int label1 = newlabel();
+		emitlabel(label1); 
+		after = newlabel();
+		expr.jumping(0, after);
+		int label3 = newlabel();
+		emitlabel(label3);	stmt3.gen(label3,b);
+		int label2 = newlabel();
+		emitlabel(label2);	stmt2.gen(label2,b);
+		emit("goto L" + label3);
+		emitlabel(after);
+	}
 
 }
