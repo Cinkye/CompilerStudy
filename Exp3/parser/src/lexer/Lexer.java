@@ -17,9 +17,11 @@ public class Lexer {
 		reserve(new Word("if", Tag.IF));
 		reserve(new Word("else", Tag.ELSE));
 		reserve(new Word("while", Tag.WHILE));
+		reserve(new Word("switch", Tag.SWITCH));
 		reserve(new Word("do", Tag.DO));
 		reserve(new Word("break", Tag.BREAK));
 		reserve(new Word("for", Tag.FOR));
+		reserve(new Word("case", Tag.CASE));
 		
 		reserve(Word.True); reserve(Word.False);
 		

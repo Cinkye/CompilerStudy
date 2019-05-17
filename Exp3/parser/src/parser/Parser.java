@@ -18,6 +18,7 @@ import inter.Seq;
 import inter.Set;
 import inter.SetElem;
 import inter.Stmt;
+import inter.Switch;
 import inter.Unary;
 import inter.While;
 
@@ -151,6 +152,20 @@ public class Parser {
 	    	 fornode.init(fors1, forx, fors2, fors3);
 	    	 Stmt.Enclosing = savedStmt;
 	    	 return fornode;
+
+			case Tag.SWITCH:
+				Switch switchnode = new Switch();
+				savedStmt = Stmt.Enclosing; Stmt.Enclosing = switchnode;
+				match(Tag.SWITCH);	match('(');
+				Token t = look;
+				match(Tag.ID);
+				Id id = top.get(t);
+	      	if( id == null ) error(t.toString() + " undeclared");
+				match(')');	match('{');
+				match(Tag.CASE);match
+
+				
+
 
 	      case '{':
 	         return block();
