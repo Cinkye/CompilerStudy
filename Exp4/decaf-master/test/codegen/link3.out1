@@ -1,0 +1,6 @@
+spim: (parser) Unknown character on line 2 of file tmp.asm
+	  *** Error.
+	  ^
+spim: (parser) Unknown character on line 3 of file tmp.asm
+	  *** Linker: function 'main' not defined
+	  ^
